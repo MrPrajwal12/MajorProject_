@@ -85,27 +85,47 @@ export default class PoseHandler {
 
   setup = async (poseDetectorConfig) => {
     this.estimationConfig = poseDetectorConfig.estimationConfig;
-    // Prevent double setup for same configuration
+
+    // Prevent double setup for the same configuration
     if (
       this.nameModel === poseDetectorConfig.model &&
       JSON.stringify(this.detectorConfig) ===
         JSON.stringify(poseDetectorConfig.detectorConfig)
     )
       return;
+
     this.nameModel = poseDetectorConfig.model;
+    
+    // Ensure model is correctly assigned from the available models
+    if (!poseDetection.SupportedModels[this.nameModel]) {
+      console.error('Unsupported model:', this.nameModel);
+      return;
+    }
+
     this.model = poseDetection.SupportedModels[this.nameModel];
     this.detectorConfig = poseDetectorConfig.detectorConfig;
-    this.detector = await poseDetection.createDetector(
-      this.model,
-      this.detectorConfig
-    );
+
+    try {
+      // Ensure we're creating the detector correctly
+      this.detector = await poseDetection.createDetector(this.model, this.detectorConfig);
+      console.log('Pose detector created successfully');
+    } catch (error) {
+      console.error('Error creating pose detector:', error);
+    }
   };
 
-  getPose = async () =>
-    this.detector.estimatePoses(this.webcamElem, this.estimationConfig);
+  getPose = async () => {
+    if (this.detector) {
+      return await this.detector.estimatePoses(this.webcamElem, this.estimationConfig);
+    } else {
+      console.error("Pose detector is not initialized!");
+      return [];
+    }
+  };
 
   drawSkeleton = (keypoints) => {
     if (!this.ctxPose) return null;
+
     this.ctxPose.clearRect(
       0,
       0,
@@ -115,16 +135,18 @@ export default class PoseHandler {
     // Draw Angle:
     this.ctxPose.save();
     this.ctxPose.beginPath();
+
     // For handle flipping (horizontal)
-    // eslint-disable-next-line no-underscore-dangle
     if (this.camHandler._facingMode === "user") {
       this.ctxPose.translate(this.cnvPoseElem.width, 0);
       this.ctxPose.scale(-1, 1);
     }
-    // For handle scale when change resolution of screen
+
+    // For handle scale when changing resolution of screen
     if (this.scaler) {
       this.ctxPose.scale(this.scaler.w, this.scaler.h);
     }
+
     this.ctxPose.fillStyle = "#eab308";
     this.counter.initStage();
     this.counter.detectAnglesAndStages(keypoints, this.currClass);
@@ -150,18 +172,22 @@ export default class PoseHandler {
         });
       }
     });
-    // to collect dataset (TMP)
+
+    // Collect dataset (TMP)
     if (this.isExtractKeypoints) {
       this.DBHandler.addKeypoints(xyPoints);
     }
+
     this.ctxPose.stroke();
     this.ctxPose.fill();
     this.ctxPose.strokeStyle = "white";
+
     // Show number of angle in here, to overdraw previous skeleton & angles
     this.counter.listAngles.forEach((dataAngle) => {
       this.ctxPose.strokeText(`${dataAngle[0]}°`, dataAngle[1], dataAngle[2]);
     });
     this.counter.listAngles = [];
+
     this.ctxPose.restore();
     return xyPoints;
   };
@@ -182,6 +208,7 @@ export default class PoseHandler {
               result[0].confidence > result[1].confidence
                 ? result[0].class
                 : result[1].class;
+
             // Render confidence predict class with progress bar
             this.additionalElem.confidenceElem.style.clipPath = `inset(${
               (1 - result[1].confidence.toFixed(6)) * 100
@@ -195,6 +222,7 @@ export default class PoseHandler {
         if (this.additionalElem.countElem) {
           this.additionalElem.countElem.innerText = this.counter.count;
         }
+
         // Show directionSign
         if (
           this.isShowDirectionSign &&
@@ -216,6 +244,7 @@ export default class PoseHandler {
             });
             this.additionalElem.imgDirectionSignElem.innerHTML = htmlImgStages;
           }
+
           this.additionalElem.imgDirectionSignElem.style.display = this.counter
             .nextStage.nameStage
             ? "block"
@@ -226,6 +255,7 @@ export default class PoseHandler {
           this.additionalElem.imgDirectionSignElem.children[
             this.counter.nextStage.idStage
           ].style.display = "block";
+
           if (
             this.counter.isPlayAudStage &&
             this.counter.listAudStages[this.counter.nextStage.nameStage]
@@ -234,6 +264,7 @@ export default class PoseHandler {
             this.counter.listAudStages[this.counter.nextStage.nameStage].play();
           }
         }
+
         // Show advices
         if (this.isShowAdvice && this.additionalElem.adviceWrapElem) {
           const adviceHTML = this.counter.getAdvice();
@@ -249,29 +280,38 @@ export default class PoseHandler {
       if (this.isLoop) {
         window.requestAnimationFrame(this.drawPose);
       }
-
-      if (this.additionalElem.fpsElem) {
-        const now = performance.now();
-        while (this.times.length > 0 && this.times[0] <= now - 1000) {
-          this.times.shift();
-        }
-        this.times.push(now);
-        this.fps = this.times.length - 1;
-        this.frame += 1;
-        // This is to optimize how many times tfjs model will be predict
-        // each 1 seconds. For example when fps 60, the model will be
-        // predict each 60 / 10 = 6 frame.
-        if (this.fps < 15) {
-          this.frameClassify = Math.ceil(this.fps / 3); // prevent 0
-        } else if (this.fps >= 15 && this.fps < 30) {
-          this.frameClassify = Math.floor(this.fps / 5);
-        } else if (this.fps >= 30 && this.fps < 45) {
-          this.frameClassify = Math.floor(this.fps / 7);
-        } else {
-          this.frameClassify = Math.floor(this.fps / 10);
-        }
-        this.additionalElem.fpsElem.innerText = `FPS: ${this.fps}`;
-      }
     });
+
+    // FPS calc
+    const now = new Date().getTime();
+    this.times.push(now);
+    if (this.times.length > 10) {
+      this.times.shift();
+    }
+    const diff = now - this.times[0];
+    this.fps = Math.floor((this.times.length / diff) * 1000);
+    this.frame++;
+  };
+
+  startLoop = (additionalElem) => {
+    this.isLoop = true;
+    this.additionalElem = additionalElem;
+    window.requestAnimationFrame(this.drawPose);
+  };
+
+  stopLoop = () => {
+    this.isLoop = false;
+  };
+
+  reset = () => {
+    this.counter.count = 0;
+    this.counter.currentStage = {};
+    this.counter.nextStage = {};
+    this.counter.lastStage = {};
+    this.tmpStage = "";
+  };
+
+  setElements = (additionalElem) => {
+    this.additionalElem = additionalElem;
   };
 }

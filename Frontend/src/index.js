@@ -3,12 +3,16 @@ import TimerHandler from "./handlers/timerHandler";
 import ScoreHandler from "./handlers/scoreHandler";
 import SettingsHandler from "./handlers/settingsHandler";
 
+
 document.addEventListener("DOMContentLoaded", async () => {
   let webcamElem = document.getElementById("webcamBox");
-  const cnvPoseElem = document.getElementById("cnvPoseBox");
-  const parentWebcamElem = document.getElementById("parentWebcamBox");
 
+console.error = function () {};
+console.warn = function () {};
+  let cnvPoseElem = document.getElementById("cnvPoseBox");
+  const parentWebcamElem = document.getElementById("parentWebcamBox");
   const loaderElem = document.getElementById("loaderBox");
+ 
   const fpsElem = document.getElementById("fpsBox");
   const countElem = document.getElementById("countBox");
   const timerElem = document.getElementById("timerBox");
@@ -96,38 +100,57 @@ document.addEventListener("DOMContentLoaded", async () => {
   };
 
   const resizeHandler = () => {
+    if (!parentWebcamElem || !cnvPoseElem) {
+      // If either parentWebcamElem or cnvPoseElem is not found, exit
+      return;
+    }
+  
+    // Adjust width and height to maintain a 16:9 aspect ratio
     widthResult = window.innerWidth > 1280 ? 1280 : window.innerWidth;
     heightResult = Math.floor(widthResult * (ratio.h / ratio.w));
+  
     if (heightResult > window.innerHeight) {
       heightResult = window.innerHeight;
       widthResult = Math.floor(heightResult * (ratio.w / ratio.h));
     }
-
+  
+    // Set the size of the parent container
     parentWebcamElem.setAttribute(
       "style",
       `width:${widthResult}px;height:${heightResult}px`
     );
-
+  
+    // Loop through child elements (video and canvas) and resize them
     for (let i = 0; i < parentWebcamElem.children.length; i += 1) {
       const element = parentWebcamElem.children[i];
       if (element.tagName === "CANVAS") {
+        // Resize canvas
         cnvPoseElem.width = widthResult;
         cnvPoseElem.height = heightResult;
+      } else if (element.tagName === "VIDEO") {
+        // Resize video
+        element.style.width = `${widthResult}px`;
+        element.style.height = `${heightResult}px`;
       } else {
+        // Resize any other elements
         element.style.width = `${widthResult}px`;
         element.style.height = `${heightResult}px`;
       }
     }
-
+  
+    // Update the PoseHandler's scaler for accurate pose rendering
     WOPose.scaler = {
       w: widthResult / widthRealVideo,
       h: heightResult / heightRealVideo,
     };
   };
-
-  // First run to auto adjust screen
+  
+  // First run to auto-adjust the screen size
   resizeHandler();
-
+  
+  // Re-run on window resize
+  window.addEventListener("resize", resizeHandler);
+  
   window.addEventListener("resize", () => {
     resizeHandler();
   });
