@@ -493,234 +493,231 @@
       background-color: rgba(0, 0, 0, 0.5);
       z-index: 1;
     }
+/* General Body Styling */
 
-    body {
-      font-family: "Open Sans", sans-serif;
-      color: #444444;
-      background-color: #f8f9fa;
-      padding: 30px;
-      margin: 0;
-    }
+/* Reset some default styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #333333;
+  background-color: #f8f9fa;
+  padding: 20px;
+  margin: 0;
+}
 
-    h2,
-    h3 {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #343a40;
-      text-align: center;
-      margin-bottom: 20px;
-    }
+/* Heading Styling */
+h2,
+h3 {
+  font-size: 1.5rem; /* Reduce font size */
+  font-weight: bold;
+  color: #343a40;
+  text-align: center;
+  margin-bottom: 15px;
+}
 
-    .container-sec {
-      display: flex;
-      flex-direction: row;
-      /* Aligns the children (sections) in a row */
-      justify-content: space-between;
-      /* Optional, adds space between sections */
-      gap: 20px;
-      /* Adds gap between the two sections */
+/* Container Section Styling */
+.container-sec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 15px; /* Reduce gap between sections */
+  width: 100%;
+  padding: 20px; /* Reduce padding */
+  height: auto; /* Adjust for dynamic height */
+}
+
+.container-sec > section {
+  flex: 1;
+  padding: 15px; /* Reduce padding */
+  background-color: #e9ecef;
+  border-radius: 8px; /* Slightly smaller corners */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  height: auto; /* Adjust height to content */
+  overflow: auto;
+  border: 1px solid #fff; /* Light white border */
+}
+
+/* Form Styling */
+form {
+  background-color: #e9ecef;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 10px; /* Reduce spacing */
+}
+
+.form-group label {
+  font-weight: 500;
+  color: #333;
+  font-size: 0.9rem; /* Smaller font size */
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 5px; /* Reduce padding */
+  margin-top: 3px; /* Tighten margin */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem; /* Smaller input font size */
+}
+
+.form-group .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  font-size: 0.9rem; /* Smaller button text */
+  padding: 8px 16px; /* Smaller button padding */
+  width: 100%;
+  border-radius: 4px;
+}
+
+.form-group .btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+/* Results Section Styling */
+#personal-info-results,
+#results {
+  background-color: #ffffff;
+  padding: 15px; /* Reduce padding */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px; /* Reduce margin */
+  font-size: 0.9rem; /* Smaller font size */
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden; /* Contain content */
+  border: 1px solid #fff; /* Light white border */
+}
+
+/* Diet Plan Styling */
+.diet-plan {
+  background-color: #ffffff;
+  padding: 15px; /* Reduce padding */
+  border-radius: 8px;
+  margin-top: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #fff; /* Light white border */
+}
+
+.diet-plan h3 {
+  font-size: 1.2rem; /* Smaller font size */
+  color: #e76f51;
+  margin-bottom: 10px; /* Reduce margin */
+}
+
+.diet-plan p {
+  font-size: 0.9rem; /* Smaller font size */
+  margin-bottom: 6px; /* Tighten spacing */
+}
+
+/* Table Styling */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px; /* Reduce margin */
+}
+
+.table th,
+.table td {
+  padding: 8px; /* Reduce padding */
+  text-align: left;
+  border-bottom: 1px solid #E5E5E5;
+  font-size: 0.9rem; /* Smaller font size */
+}
+
+.table th {
+  background-color: #F0F8FF;
+  color: #4A5568;
+}
+
+.table td {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.table-striped tbody tr:nth-child(odd) {
+  background-color: #fafafa;
+}
+
+.table-striped tbody tr:nth-child(even) {
+  background-color: #f0f8ff;
+}
+
+button {
+  background-color: #4A90E2;
+  color: #ffffff;
+  border: none;
+  padding: 8px 18px; /* Smaller padding */
+  font-size: 0.9rem; /* Smaller font size */
+  border-radius: 8px;
+  margin-top: 20px; /* Reduce margin */
+}
+
+.side-heading {
+  font-weight: bold;
+  color: #e76f51; /* Choose your desired color */
+}
+/* Modal Styles */
+.modal {
+      display: none; /* Hidden by default */
+      position: fixed;
+      z-index: 1; /* Sit on top */
+      left: 0;
+      top: 0;
       width: 100%;
-      /* Ensures the container takes full width */
-      
-      padding: 40px;
       height: 100%;
+      background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
     }
 
-    .container-sec>section {
-      flex: 1;
-      /* Ensures both sections take equal width */
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
       padding: 20px;
-      /* Optional padding for spacing inside each section */
-      background-color: #e9ecef;
-      /* Optional background color */
-      border-radius: 10px;
-      /* Optional rounded corners */
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-      /* Optional shadow for better styling */
-      height: 100vh;
-      overflow: auto
-    }
-
-    /* Form Group Styling */
-    form {
-      background-color: #e9ecef;
-      color: white;
-    }
-
-    .form-group {
-      margin-bottom: 15px;
-
-    }
-
-    .form-group label {
-      font-weight: 600;
-      color: #333;
-    }
-
-    .form-group input,
-    .form-group select {
-      width: 100%;
-      padding: 6px;
-      margin-top: 5px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      font-size: 1rem;
-
-    }
-
-    .form-group input[type="number"] {
-      background-color: #ffffff;
-
-    }
-
-    /* Button Styling */
-    .form-group .btn-primary {
-      background-color: #007bff;
-      border-color: #007bff;
-      font-size: 1.1rem;
-      padding: 12px 24px;
-      width: 100%;
-      border-radius: 5px;
-      color: white;
-    }
-
-    .form-group .btn-primary:hover {
-      background-color: #0056b3;
-      border-color: #0056b3;
-    }
-
-    /* Results Section Styling */
-    /* Results Section Styling */
-    #personal-info-results,
-    #results {
-      background-color: #f9fafb;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      margin-top: 30px;
-      display: none;
-      transition: all 0.3s ease-in-out;
-      /* Smooth transition when showing the results */
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-      /* Centering the results box */
-      font-family: 'Roboto', sans-serif;
-      color: #333;
-      border-left: 8px solid #4A90E2;
-      /* Blue border for visual accent */
-    }
-
-    #personal-info-results h2,
-    #results h2 {
-      font-size: 2rem;
-      color: #2d3748;
-      margin-bottom: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 400px;
       text-align: center;
-      padding: 10px;
-      color: #4A90E2;
-      /* Accent color */
-      background-color: white;
-      border-radius: 10px;
     }
 
-    #personal-info-results p,
-    #results p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: #4A5568;
-      margin-bottom: 12px;
-      padding-left: 10px;
-      border-left: 4px solid #E5E5E5;
-      /* Light left border for sections */
-    }
-
-    .diet-plan {
-      background-color: #ffffff;
-      padding: 20px;
-      border-radius: 10px;
-      margin-top: 30px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      border-top: 5px solid #FF7F50;
-      /* Orange accent for the diet plan */
-    }
-
-    .diet-plan h3 {
-      font-size: 1.5rem;
-      color: #FF7F50;
-      /* Orange color */
-      text-transform: uppercase;
-      margin-bottom: 15px;
-
-    }
-
-    .diet-plan p {
-      font-size: 1.1rem;
-      color: #4A5568;
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-
-    .table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 30px;
-    }
-
-    .table th,
-    .table td {
-      padding: 12px;
-      text-align: left;
-      border-bottom: 1px solid #E5E5E5;
-    }
-
-    .table th {
-      background-color: #F0F8FF;
-      /* Light blue for table headers */
-      color: #4A5568;
-    }
-
-    .table td {
-      background-color: #ffffff;
-      color: #333;
-    }
-
-    .table-striped tbody tr:nth-child(odd) {
-      background-color: #fafafa;
-      /* Alternating row color */
-    }
-
-    .table-striped tbody tr:nth-child(even) {
-      background-color: #f0f8ff;
-      /* Light blue alternating row color */
-    }
-
-    .table-striped tbody tr:hover {
-      background-color: #f1f1f1;
-    }
-
-    button {
-      background-color: #4A90E2;
-      color: #ffffff;
-      border: none;
-      padding: 12px 25px;
-      font-size: 1rem;
-      border-radius: 12px;
+    .close-btn {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
       cursor: pointer;
-      transition: background-color 0.3s ease;
-      margin-top: 25px;
-      display: block;
-
     }
 
-    button:hover {
-      background-color: #0072bb;
+    .close-btn:hover,
+    .close-btn:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
     }
 
-    button:focus {
-      outline: none;
+    /* Style for warning label */
+    .warning-label {
+      color: orange;
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 10px;
     }
 
+    .error-message {
+      color: red;
+      font-weight: bold;
+    }
+
+    .warning-message {
+      color: #ffcc00;
+    }
   </style>
   <script>
     (function (factory) {
@@ -976,223 +973,257 @@
       </button>
     </div>
   </header>
-
-  <div class="container-sec">
-
-    <section id="personal-info-section">
-      <h2>Enter Personal Information for BMI and BMR Calculation</h2>
-
-      <form id="personal-info-form">
-        <div class="form-group">
-          <label for="age">Age:</label>
-          <input type="number" id="age" name="age" required />
-        </div>
-
-        <div class="form-group">
-          <label for="weight">Weight (kg):</label>
-          <input type="number" id="weight" name="weight" step="0.01" required />
-        </div>
-
-        <div class="form-group">
-          <label for="height">Height (cm):</label>
-          <input type="number" id="height" name="height" step="0.01" required />
-        </div>
-
-        <div class="form-group">
-          <label for="gender">Gender:</label>
-          <select id="gender" name="gender" required>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="activity-level">Activity Level:</label>
-          <select id="activity-level" name="activity-level" required>
-            <option value="sedentary">0-2</option>
-            <option value="lightly active">2-4</option>
-            <option value="moderately active">4-6</option>
-            <option value="very active">6-8</option>
-            <option value="extra active">8-10</option>
-          </select>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Calculate BMI and BMR</button>
-      </form>
-      <div id="personal-info-results">
-        <!-- Results will be displayed here -->
-      </div>
-
-    </section>
-
-
-
-
-
-
-    <section>
-      <h2>Diet Plan Generator</h2>
-      <form id="dietForm">
-        <div class="form-group">
-          <label for="state">State:</label>
-          <select id="state" class="form-control" required>
-            <option value="Andhra Pradesh">Andhra Pradesh</option>
-            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-            <option value="Assam">Assam</option>
-            <option value="Bihar">Bihar</option>
-            <option value="Chhattisgarh">Chhattisgarh</option>
-            <option value="Goa">Goa</option>
-            <option value="Gujarat">Gujarat</option>
-            <option value="Haryana">Haryana</option>
-            <option value="Himachal Pradesh">Himachal Pradesh</option>
-            <option value="Jharkhand">Jharkhand</option>
-            <option value="Karnataka">Karnataka</option>
-            <option value="Kerala">Kerala</option>
-            <option value="Madhya Pradesh">Madhya Pradesh</option>
-            <option value="Maharashtra">Maharashtra</option>
-            <option value="Manipur">Manipur</option>
-            <option value="Meghalaya">Meghalaya</option>
-            <option value="Mizoram">Mizoram</option>
-            <option value="Nagaland">Nagaland</option>
-            <option value="Odisha">Odisha</option>
-            <option value="Punjab">Punjab</option>
-            <option value="Rajasthan">Rajasthan</option>
-            <option value="Sikkim">Sikkim</option>
-            <option value="Tamil Nadu">Tamil Nadu</option>
-            <option value="Telangana">Telangana</option>
-            <option value="Tripura">Tripura</option>
-            <option value="Uttar Pradesh">Uttar Pradesh</option>
-            <option value="Uttarakhand">Uttarakhand</option>
-            <option value="West Bengal">West Bengal</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="dietType">Diet Type:</label>
-          <select id="dietType" class="form-control" required>
-            <option value="0">Vegetarian</option>
-            <option value="1">Non-Vegetarian</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="weightGoal">Weight Goal:</label>
-          <select id="weightGoal" class="form-control" required>
-            <option value="gain">Gain</option>
-            <option value="lose">Lose</option>
-            <option value="healthy">Healthy</option>
-          </select>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Get Diet Plan</button>
-      </form>
-      <div id="results"></div>
-    </section>
+  <div id="errorModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <p id="warningLabel" class="warning-label" style="display:none;">Warning</p> <!-- Hidden by default -->
+      <p id="modalMessage"></p>
+    </div>
   </div>
 
-  <button class="back-to-top" onclick="scrollToTop()">
-    <i class="fas fa-arrow-up"></i>
-  </button>
 
+    <div class="container-sec">
+
+      <section id="personal-info-section">
+        <h2>Enter Personal Information for BMI and BMR Calculation</h2>
+  
+        <form id="personal-info-form">
+          <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required />
+          </div>
+  
+          <div class="form-group">
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" name="weight" step="0.01" required />
+          </div>
+  
+          <div class="form-group">
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" name="height" step="0.01" required />
+          </div>
+  
+          <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="activity-level">Activity Level:</label>
+            <select id="activity-level" name="activity-level" required>
+              <option value="sedentary">0-2</option>
+              <option value="lightly active">2-4</option>
+              <option value="moderately active">4-6</option>
+              <option value="very active">6-8</option>
+              <option value="extra active">8-10</option>
+            </select>
+          </div>
+  
+          <button type="submit" class="btn btn-primary">Calculate BMI and BMR</button>
+        </form>
+        <div id="personal-info-results">
+          <!-- Results will be displayed here -->
+        </div>
+  
+      </section>
+  
+  
+  
+  
+  
+  
+      <section>
+        <h2>Diet Plan Generator</h2>
+        <form id="dietForm">
+          <div class="form-group">
+            <label for="state">State:</label>
+            <select id="state" class="form-control" required>
+              <option value="Andhra Pradesh">Andhra Pradesh</option>
+              <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+              <option value="Assam">Assam</option>
+              <option value="Bihar">Bihar</option>
+              <option value="Chhattisgarh">Chhattisgarh</option>
+              <option value="Goa">Goa</option>
+              <option value="Gujarat">Gujarat</option>
+              <option value="Haryana">Haryana</option>
+              <option value="Himachal Pradesh">Himachal Pradesh</option>
+              <option value="Jharkhand">Jharkhand</option>
+              <option value="Karnataka">Karnataka</option>
+              <option value="Kerala">Kerala</option>
+              <option value="Madhya Pradesh">Madhya Pradesh</option>
+              <option value="Maharashtra">Maharashtra</option>
+              <option value="Manipur">Manipur</option>
+              <option value="Meghalaya">Meghalaya</option>
+              <option value="Mizoram">Mizoram</option>
+              <option value="Nagaland">Nagaland</option>
+              <option value="Odisha">Odisha</option>
+              <option value="Punjab">Punjab</option>
+              <option value="Rajasthan">Rajasthan</option>
+              <option value="Sikkim">Sikkim</option>
+              <option value="Tamil Nadu">Tamil Nadu</option>
+              <option value="Telangana">Telangana</option>
+              <option value="Tripura">Tripura</option>
+              <option value="Uttar Pradesh">Uttar Pradesh</option>
+              <option value="Uttarakhand">Uttarakhand</option>
+              <option value="West Bengal">West Bengal</option>
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="dietType">Diet Type:</label>
+            <select id="dietType" class="form-control" required>
+              <option value="0">Vegetarian</option>
+              <option value="1">Non-Vegetarian</option>
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="weightGoal">Weight Goal:</label>
+            <select id="weightGoal" class="form-control" required>
+              <option value="gain">Gain</option>
+              <option value="lose">Lose</option>
+              <option value="healthy">Healthy</option>
+            </select>
+          </div>
+  
+          <button type="submit" class="btn btn-primary">Get Diet Plan</button>
+        </form>
+        <div id="results"></div>
+      </section>
+    </div>
+  
+    <button class="back-to-top" onclick="scrollToTop()">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+  
+  
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const personalInfoForm = document.getElementById("personal-info-form");
-      const personalInfoResults = document.getElementById("personal-info-results");
+  document.addEventListener("DOMContentLoaded", function () {
+    const personalInfoForm = document.getElementById("personal-info-form");
+    const personalInfoResults = document.getElementById("personal-info-results");
+    let isBmiBmrCalculated = false;  // Flag to check if BMI and BMR are calculated
+  
+    personalInfoForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+  
+      const age = parseInt(document.getElementById("age").value);
+      const weight = parseFloat(document.getElementById("weight").value);
+      const height = parseFloat(document.getElementById("height").value) / 100; // converting cm to meters
+      const gender = document.getElementById("gender").value;
+      const activityLevel = document.getElementById("activity-level").value;
+  
+      // Input validation
+      if (isNaN(age) || age <= 0 || age > 120) {
+  showModal("Please enter a valid age between 1 and 120.");
+  return;
+}
 
-      personalInfoForm.addEventListener("submit", function (event) {
-        event.preventDefault();
+if (isNaN(weight) || weight <= 0 || weight > 500) {
+  showModal("Please enter a valid weight between 1kg and 500kg.");
+  return;
+}
 
-        const age = parseInt(document.getElementById("age").value);
-        const weight = parseFloat(document.getElementById("weight").value);
-        const height = parseFloat(document.getElementById("height").value) / 100; // converting cm to meters
-        const gender = document.getElementById("gender").value;
-        const activityLevel = document.getElementById("activity-level").value;
+if (isNaN(height) || height <= 0 || height > 300) {
+  showModal("Please enter a valid height between 1cm and 300cm.");
+  return;
+}
 
-        // Calculate BMI
-        const BMI = weight / (height * height);
-
-        // Calculate BMR using Mifflin-St Jeor equation
-        let BMR;
-        if (gender === "male") {
-          BMR = 10 * weight + 6.25 * height * 100 - 5 * age + 5;
-        } else if (gender === "female") {
-          BMR = 10 * weight + 6.25 * height * 100 - 5 * age - 161;
-        } else {
-          BMR = 10 * weight + 6.25 * height * 100 - 5 * age + 0;
-        }
-
-        // Activity level adjustment factor
-        let activityFactor;
-        switch (activityLevel) {
-          case "sedentary":
-            activityFactor = 1.2;
-            break;
-          case "lightly active":
-            activityFactor = 1.375;
-            break;
-          case "moderately active":
-            activityFactor = 1.55;
-            break;
-          case "very active":
-            activityFactor = 1.725;
-            break;
-          case "extra active":
-            activityFactor = 1.9;
-            break;
-        }
-
-        // Calculate maintenance calories
-        const caloriesToMaintainWeight = BMR * activityFactor;
-
-        // Macronutrient breakdown (example with general recommendations)
-        const requiredCarbs = (caloriesToMaintainWeight * 0.45) / 4; // 45% carbs
-        const requiredProtein = (caloriesToMaintainWeight * 0.30) / 4; // 30% protein
-        const requiredFat = (caloriesToMaintainWeight * 0.25) / 9; // 25% fat
-
-        // BMI Tags
-        let BMITags;
-        if (BMI < 18.5) {
-          BMITags = "Underweight";
-        } else if (BMI >= 18.5 && BMI < 24.9) {
-          BMITags = "Normal weight";
-        } else if (BMI >= 25 && BMI < 29.9) {
-          BMITags = "Overweight";
-        } else {
-          BMITags = "Obese";
-        }
-
-        // Display results
-        personalInfoResults.innerHTML = `
-              <h2>Hey, we have calculated a few metrics to analyze your health!</h2>
-              <p>Age: ${age}</p>
-              <p>Activity Level: ${activityLevel}</p>
-              <p>BMI: ${BMI.toFixed(2)}</p>
-              <p>BMR: ${BMR.toFixed(2)} kcal/day</p>
-              <p>BMI Tags: ${BMITags}</p>
-              <p>Calories to maintain weight: ${caloriesToMaintainWeight.toFixed(2)} kcal/day</p>
-              <p>Required daily intake of carbohydrates: ${requiredCarbs.toFixed(2)} grams</p>
-              <p>Required daily intake of protein: ${requiredProtein.toFixed(2)} grams</p>
-              <p>Required daily intake of fat: ${requiredFat.toFixed(2)} grams</p>
-              <div class="diet-plan">
-                <h3>Intake</h3>
-                <p><strong>Carbohydrates:</strong> ${requiredCarbs.toFixed(2)} grams/day</p>
-                <p><strong>Protein:</strong> ${requiredProtein.toFixed(2)} grams/day</p>
-                <p><strong>Fat:</strong> ${requiredFat.toFixed(2)} grams/day</p>
-              </div>
-            `;
-
-        // Show the results section
-        personalInfoResults.style.display = "block";
-      });
+  
+      // Calculate BMI
+      const BMI = weight / (height * height);
+  
+      // Calculate BMR using Mifflin-St Jeor equation
+      let BMR;
+      if (gender === "male") {
+        BMR = 10 * weight + 6.25 * height * 100 - 5 * age + 5;
+      } else if (gender === "female") {
+        BMR = 10 * weight + 6.25 * height * 100 - 5 * age - 161;
+      } else {
+        BMR = 10 * weight + 6.25 * height * 100 - 5 * age;
+      }
+  
+      // Activity level adjustment factor
+      let activityFactor;
+      switch (activityLevel) {
+        case "sedentary":
+          activityFactor = 1.2;
+          break;
+        case "lightly active":
+          activityFactor = 1.375;
+          break;
+        case "moderately active":
+          activityFactor = 1.55;
+          break;
+        case "very active":
+          activityFactor = 1.725;
+          break;
+        case "extra active":
+          activityFactor = 1.9;
+          break;
+        default:
+          alert("Please select a valid activity level.");
+          return;
+      }
+  
+      // Calculate maintenance calories
+      const caloriesToMaintainWeight = BMR * activityFactor;
+  
+      // Macronutrient breakdown (example with general recommendations)
+      const requiredCarbs = (caloriesToMaintainWeight * 0.45) / 4; // 45% carbs
+      const requiredProtein = (caloriesToMaintainWeight * 0.30) / 4; // 30% protein
+      const requiredFat = (caloriesToMaintainWeight * 0.25) / 9; // 25% fat
+  
+      // BMI Tags
+      let BMITags;
+      if (BMI < 18.5) {
+        BMITags = "Underweight";
+      } else if (BMI >= 18.5 && BMI < 24.9) {
+        BMITags = "Normal weight";
+      } else if (BMI >= 25 && BMI < 29.9) {
+        BMITags = "Overweight";
+      } else {
+        BMITags = "Obese";
+      }
+  
+      // Display results
+      personalInfoResults.innerHTML = `
+        <h2>Hey, we have calculated a few metrics to analyze your health!</h2>
+        <p><span class="side-heading">Age:</span> ${age}</p>
+        <p><span class="side-heading">Activity Level:</span> ${activityLevel}</p>
+        <p><span class="side-heading">BMI:</span> ${BMI.toFixed(2)}</p>
+        <p><span class="side-heading">BMR:</span> ${BMR.toFixed(2)} kcal/day</p>
+        <p><span class="side-heading">BMI Tags:</span> ${BMITags}</p>
+        <p><span class="side-heading">Calories to maintain weight:</span> ${caloriesToMaintainWeight.toFixed(2)} kcal/day</p>
+        <p><span class="side-heading">Required daily intake of carbohydrates:</span> ${requiredCarbs.toFixed(2)} grams</p>
+        <p><span class="side-heading">Required daily intake of protein:</span> ${requiredProtein.toFixed(2)} grams</p>
+        <p><span class="side-heading">Required daily intake of fat:</span> ${requiredFat.toFixed(2)} grams</p>
+      `;
+  
+      personalInfoResults.style.display = "block";
+      isBmiBmrCalculated = true;  // Set flag to true when BMI and BMR are calculated
     });
+  
     document.getElementById("dietForm").addEventListener("submit", async function (event) {
       event.preventDefault();
-
+  
+      if (!isBmiBmrCalculated) {
+        alert("Please calculate BMI and BMR before getting the diet plan.");
+        return;  // Prevent form submission if BMI and BMR are not calculated
+      }
+  
       const state = document.getElementById("state").value;
       const dietType = document.getElementById("dietType").value;
       const weightGoal = document.getElementById("weightGoal").value;
-
+  
+      if (!state || !dietType || !weightGoal) {
+        alert("Please fill out all fields in the Diet Plan form.");
+        return;
+      }
+  
       try {
         const response = await fetch(
           `http://127.0.0.1:8000/get_diet_plan/?state=${state}&diet_type=${dietType}&weight_goal=${weightGoal}`
@@ -1200,108 +1231,114 @@
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-
+  
         const data = await response.json();
         document.getElementById("results").innerHTML = ""; // Clear previous results
         const mealSection = document.createElement("div");
         mealSection.className = "meal-section";
-
+  
         // Add a heading for the selected meal
         const mealHeading = document.createElement("h2");
         mealHeading.textContent = "Diet Plan Suggestions";
         mealSection.appendChild(mealHeading);
-
+  
         // Display suggestions
         const suggestions = data.suggestions;
         if (suggestions && suggestions.length > 0) {
           let tableHtml = `
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Food Name</th>
-                    <th>Allergic Ingredients</th>
-                    <th>Calories</th>
-                    <th>Proteins</th>
-                    <th>Fats</th>
-                    <th>Carbohydrates</th>
-                    <th>Sodium</th>
-                    <th>Vitamin Content</th>
-                  </tr>
-                </thead>
-                <tbody>`;
-
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Food Name</th>
+                  <th>Allergic Ingredients</th>
+                  <th>Calories</th>
+                  <th>Proteins</th>
+                  <th>Fats</th>
+                  <th>Carbohydrates</th>
+                  <th>Sodium</th>
+                  <th>Vitamin Content</th>
+                </tr>
+              </thead>
+              <tbody>`;
+  
           suggestions.forEach((item) => {
             tableHtml += `
-                <tr>
-                  <td>${item['Food Name']}</td>
-                  <td>${item['Allergic Ingredients'] || "None"}</td>
-                  <td>${item['Total Calories']}</td>
-                  <td>${item['Total Protein']}</td>
-                  <td>${item['Total Fats']}</td>
-                  <td>${item['Total Carbs']}</td>
-                  <td>${item['Total Sodium']}</td>
-                  <td>${item['Vitamin Content']}</td>
-                </tr>`;
+              <tr>
+                <td>${item['Food Name']}</td>
+                <td>${item['Allergic Ingredients'] || "None"}</td>
+                <td>${item['Total Calories']}</td>
+                <td>${item['Total Protein']}</td>
+                <td>${item['Total Fats']}</td>
+                <td>${item['Total Carbs']}</td>
+                <td>${item['Total Sodium']}</td>
+                <td>${item['Vitamin Content']}</td>
+              </tr>`;
           });
-
+  
           tableHtml += "</tbody></table>";
           mealSection.innerHTML += tableHtml;
-
         } else {
           mealSection.innerHTML += "<p>No suggestions available</p>";
         }
-
+  
         document.getElementById("results").appendChild(mealSection);
-        document.getElementById("results").style.display = "block"
+        document.getElementById("results").style.display = "block";
       } catch (error) {
         console.error("Error fetching diet plan:", error);
         document.getElementById("results").innerHTML = "<p>Failed to load diet plan.</p>";
       }
     });
-  </script>
-  <script>
-    // Logout button click event
-    document.getElementById("logoutButton").addEventListener("click", (e) => {
-      e.preventDefault();
-      // Remove the token from localStorage
-      localStorage.removeItem("token");
+  });
+  // JavaScript to show modal
+  function showModal(message, type = "error") {
+      const modal = document.getElementById('errorModal');
+      const modalMessage = document.getElementById('modalMessage');
+      const warningLabel = document.getElementById('warningLabel');
 
-      // Redirect to the login page or perform any other necessary actions
-      window.location.href = "/";
+      // Set message content and style based on type
+      modalMessage.textContent = message;
+      
+      if (type === "warning") {
+        warningLabel.style.display = "block";  // Show warning label
+        modalMessage.classList.add("warning-message");
+        modalMessage.classList.remove("error-message");
+      } else {
+        warningLabel.style.display = "none";  // Hide warning label
+        modalMessage.classList.add("error-message");
+        modalMessage.classList.remove("warning-message");
+      }
+
+      modal.style.display = "block";
+    }
+
+    // Close the modal when the close button is clicked
+    document.querySelector('.close-btn').addEventListener('click', function () {
+      const modal = document.getElementById('errorModal');
+      modal.style.display = "none";
     });
 
-    "use strict";
+    // Close the modal when the outside of the modal is clicked
+    window.addEventListener('click', function (event) {
+      const modal = document.getElementById('errorModal');
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
 
-    /**
-     * navbar toggle
-     */
-    const navOpenBtn = document.querySelector("[data-nav-open-btn]");
-    const navbar = document.querySelector("[data-navbar]");
-    const navCloseBtn = document.querySelector("[data-nav-close-btn]");
-    const overlay = document.querySelector("[data-overlay]");
-
-    const elemArr = [navCloseBtn, overlay, navOpenBtn];
-
-    for (let i = 0; i < elemArr.length; i++) {
-      elemArr[i].addEventListener("click", function () {
-        navbar.classList.toggle("active");
-        overlay.classList.toggle("active");
-      });
+    // Example function that triggers the warning modal
+    function showWarningMessage() {
+      showModal("This is a warning message!", "warning");
     }
 
-    /**
-     * toggle navbar & overlay when click any navbar-link
-     */
-
-    const navbarLinks = document.querySelectorAll("[data-navbar-link]");
-
-    for (let i = 0; i < navbarLinks.length; i++) {
-      navbarLinks[i].addEventListener("click", function () {
-        navbar.classList.toggle("active");
-        overlay.classList.toggle("active");
-      });
+    // Example function that triggers the error modal
+    function showErrorMessage() {
+      showModal("This is an error message!");
     }
-  </script>
+
+  
+   
+
+</script>
+
 </body>
-
 </html>
