@@ -5,10 +5,28 @@ const app = express();
 const cors = require('cors');
 const conn = require('./config/db');
 
+const defaultAllowedOrigins = [
+    'http://localhost:8080',
+    'http://127.0.0.1:8080'
+];
+
+const envOrigins = (process.env.CORS_ORIGIN || '')
+    .split(',')
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+
+const allowedOrigins = [...new Set([...defaultAllowedOrigins, ...envOrigins])];
+
 // Configure CORS to allow requests from your frontend
 app.use(cors({
-  origin: 'http://localhost:8080', // Replace with your frontend's origin
-  credentials: true // If your frontend makes requests with credentials (like cookies or sessions)
+    origin(origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        }
+
+        return callback(new Error(`CORS blocked for origin: ${origin}`));
+    },
+    credentials: true
 }));
 
 app.get('/', (req, res) => res.send('API Running'));

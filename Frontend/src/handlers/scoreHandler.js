@@ -57,7 +57,7 @@ export default class ScoreHandler {
     emailId = localStorage.getItem("uid");
     const data = { emailId, newScore };
 
-    fetch("http://localhost:5000/exercise/scores", {
+    fetch("https://your-render-backend-url.onrender.com/exercise/scores", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

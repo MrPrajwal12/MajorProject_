@@ -577,7 +577,7 @@ a:hover {
 
         localStorage.setItem("uid", username);
 
-        const response = await fetch("http://localhost:5000/api/login2", {
+        const response = await fetch("https://your-render-backend-url.onrender.com/api/login2", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -586,7 +586,7 @@ a:hover {
         });
 
         if (response.status === 200) {
-          window.location.href = "http://localhost:8080/dashboard.html";
+          window.location.href = "/dashboard.html";
         } else {
           errorMessage.style.display = "block";
         }

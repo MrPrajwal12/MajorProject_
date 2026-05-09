@@ -22,7 +22,7 @@ form.addEventListener("submit", async (event) => {
 
   localStorage.setItem("uid", username);
 
-  const response = await fetch("http://localhost:5000/api/login2", {
+  const response = await fetch("https://your-render-backend-url.onrender.com/api/login2", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -48,7 +48,7 @@ form.addEventListener("submit", async (event) => {
         // Token received, store it in localStorage or a secure cookie
         localStorage.setItem("token", data.token);
         // Redirect the user to the dashboard or perform any other necessary actions
-        window.location.href = "http://localhost:8080/dashboard.html";
+        window.location.href = "/dashboard.html";
       } else {
         // Handle invalid credentials or other login errors
         errorMessage.style.display = "block";
@@ -61,7 +61,7 @@ form.addEventListener("submit", async (event) => {
     });
 
   // if (response.status === 200) {
-  // 	window.location.href = 'http://18.191.166.16:8080/dashboard.html';
+  // 	window.location.href = 'http://your-frontend-app-url.vercel.app/dashboard.html';
   // } else {
   // 	errorMessage.style.display = 'block';
   // }

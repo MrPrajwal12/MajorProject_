@@ -376,7 +376,7 @@
 
         if (!hasErrors) {
           const response = await fetch(
-            "http://localhost:5000/api/register",
+            "https://your-render-backend-url.onrender.com/api/register",
             {
               method: "POST",
               headers: {
@@ -387,7 +387,7 @@
           );
 
           if (response.status === 200) {
-            window.location.href = "http://localhost:8080/login.html";
+            window.location.href = "/login.html";
           } else if (response.status === 400) {
             errorMessage2.style.display = "block";
           } else {

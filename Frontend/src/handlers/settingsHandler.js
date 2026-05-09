@@ -37,7 +37,7 @@ export default class SettingsHandler {
   };
 
   saveToDatabase = () => {
-    fetch("http://localhost:5000/exercise/settingsChange", {
+    fetch("https://your-render-backend-url.onrender.com/exercise/settingsChange", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

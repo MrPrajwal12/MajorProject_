@@ -604,7 +604,7 @@
         const email = form.elements["email"].value;
         const message = form.elements["message"].value;
 
-        fetch("http://localhost:5000/email/send-email", {
+        fetch("https://your-render-backend-url.onrender.com/email/send-email", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

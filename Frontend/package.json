@@ -15,15 +15,9 @@
     "start-all": "concurrently \"npm run start-dev\" \"uvicorn main:app --reload --port 8000\""
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/yashwanth6/295A_HPE.git"
+    "type": "git"
   },
-  "author": "M",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/yashwanth6/295A_HPE/issues"
-  },
-  "homepage": "https://github.com/yashwanth6/295A_HPE#readme",
   "devDependencies": {
     "babel-loader": "^9.2.1",
     "concurrently": "^9.1.0",

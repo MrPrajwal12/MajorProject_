@@ -31,8 +31,8 @@ To determine whether or not to exercise, the model uses binary categorization. F
 - Prerequisites: you'll need to have [Git](https://git-scm.com/), [Node](https://nodejs.org/), and [NPM](https://www.npmjs.com/package/npm) installed and running on your machine.
 - Open terminal/powershell/command prompt then clone this repository  
     ```Bash
-    git clone https://github.com/yashwanth6/295A_HPE.git
-    cd 295A_HPE
+    git clone <your-repository-url>
+    cd <your-project-folder>
     ```
 - For the Backend:
     ```Bash
@@ -62,7 +62,14 @@ To determine whether or not to exercise, the model uses binary categorization. F
     ```Bash
     npm run start-dev
     ```
-- Then open http://18.191.166.16:8080 to see your app.
+- Then open http://localhost:8080 to see your app.
+
+## Deploy (Free) - Vercel + Render
+- Deploy `Backend/` to Render as a Node web service.
+- In Render, set `CORS_ORIGIN` to your Vercel frontend URL (for example `https://your-app.vercel.app`).
+- Deploy `Frontend/` to Vercel.
+- In Vercel, set `REACT_APP_API_URL` to your Render backend URL (for example `https://your-api.onrender.com`).
+- Rebuild/redeploy frontend after setting environment variables.
 
 ## Limitations
 - 3D angle is not implemented yet
